@@ -1,4 +1,4 @@
-from src.array_left_rotation import rot_left
+from array_list.array_left_rotation import rot_left
 
 def test():
     a = [1, 2, 3, 4, 5]
