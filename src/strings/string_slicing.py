@@ -10,7 +10,7 @@ def convert24(str1):
     elif str1[-2:] == "PM" and str1[:2] == "12":
         return str1[:-2]
     else:
-        return str(int(str1[:2]) + 12) + str1[2:8]  # add 12 to hours and remove PM
+        return str(int(str1[:2]) + 12) + str1[2:8]
 
 
 def string_slicing():
