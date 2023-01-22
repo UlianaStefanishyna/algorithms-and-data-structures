@@ -1,3 +1,5 @@
+# https://www.hackerrank.com/challenges/one-week-preparation-kit-lonely-integer/problem
+
 def lonely_integer_1(a):
     a.sort()
     print(a)
