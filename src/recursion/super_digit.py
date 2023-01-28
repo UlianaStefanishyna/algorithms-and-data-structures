@@ -12,11 +12,12 @@ def superDigit3(n, k):
     if int(n) * k < 10:
         return int(n)*k
     else:
-        sum = 0
-        for s in n:
-            sum += int(s)
-        sum *= k
-        output = superDigit3(str(sum), 1)
+        # sum = 0
+        # for s in n:
+        #     sum += int(s)
+        # sum *= k
+        _sum = int(sum(int(s) for s in str(n))) * k
+        output = superDigit3(str(_sum), 1)
 
     return output
 
