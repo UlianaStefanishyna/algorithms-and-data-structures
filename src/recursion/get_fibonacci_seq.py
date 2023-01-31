@@ -15,6 +15,20 @@ def get_fib(position):
         return get_fib(position-1) + get_fib(position-2)
 
 
+def fibonacci_iterative(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        a, b = 0, 1
+        for i in range(2, n + 1):
+            c = a + b
+            a = b
+            b = c
+        return b
+
+
 if __name__ == '__main__':
     assert get_fib(0) == 0
     assert get_fib(1) == 1
