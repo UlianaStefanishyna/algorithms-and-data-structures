@@ -16,6 +16,8 @@ def get_fib(position):
 
 
 if __name__ == '__main__':
-    print(get_fib(9))
-    print(get_fib(11))
-    print(get_fib(0))
+    assert get_fib(0) == 0
+    assert get_fib(1) == 1
+    assert get_fib(2) == 1
+    assert get_fib(9) == 34
+    assert get_fib(11) == 89
