@@ -6,6 +6,7 @@ iterative code in the instructions."""
 # 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 
 
+# using recursion only
 def get_fib(position):
     if position <= 0:
         return 0
@@ -15,6 +16,19 @@ def get_fib(position):
         return get_fib(position-1) + get_fib(position-2)
 
 
+# using cache and recursion (dynamic programming)
+def calculate_fibonacci_with_cache(position, cache=None):
+    if cache is None:
+        cache = {0: 0, 1: 1}
+    if position in cache:
+        return cache[position]
+    else:
+        result = calculate_fibonacci_with_cache(position-1) + calculate_fibonacci_with_cache(position-2)
+        cache[position] = result
+        return result
+
+
+# using iterative approach
 def fibonacci_iterative(n):
     if n <= 0:
         return 0
@@ -35,3 +49,16 @@ if __name__ == '__main__':
     assert get_fib(2) == 1
     assert get_fib(9) == 34
     assert get_fib(11) == 89
+
+    assert fibonacci_iterative(0) == 0
+    assert fibonacci_iterative(1) == 1
+    assert fibonacci_iterative(2) == 1
+    assert fibonacci_iterative(9) == 34
+    assert fibonacci_iterative(11) == 89
+
+    assert calculate_fibonacci_with_cache(0) == 0
+    assert calculate_fibonacci_with_cache(1) == 1
+    assert calculate_fibonacci_with_cache(2) == 1
+    assert calculate_fibonacci_with_cache(9) == 34
+    assert calculate_fibonacci_with_cache(11) == 89
+
