@@ -43,6 +43,13 @@ def fibonacci_iterative(n):
         return b
 
 
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a+b
+
+
 if __name__ == '__main__':
     assert get_fib(0) == 0
     assert get_fib(1) == 1
