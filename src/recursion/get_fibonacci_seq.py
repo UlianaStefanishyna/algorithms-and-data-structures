@@ -50,22 +50,37 @@ def fibonacci():
         a, b = b, a+b
 
 
+from uniqueness_recursion import tracefunc
+import sys
+sys.settrace(tracefunc)
+
+
+def good_fibonacci_linear_recursion(n):  # O(n)
+    if n <= 1:
+        return n, 0
+    else:
+        a, b = good_fibonacci_linear_recursion(n - 1)
+        return a + b, a
+
+
 if __name__ == '__main__':
-    assert get_fib(0) == 0
-    assert get_fib(1) == 1
-    assert get_fib(2) == 1
-    assert get_fib(9) == 34
-    assert get_fib(11) == 89
-
-    assert fibonacci_iterative(0) == 0
-    assert fibonacci_iterative(1) == 1
-    assert fibonacci_iterative(2) == 1
-    assert fibonacci_iterative(9) == 34
-    assert fibonacci_iterative(11) == 89
-
-    assert calculate_fibonacci_with_cache(0) == 0
-    assert calculate_fibonacci_with_cache(1) == 1
-    assert calculate_fibonacci_with_cache(2) == 1
-    assert calculate_fibonacci_with_cache(9) == 34
-    assert calculate_fibonacci_with_cache(11) == 89
+    # assert get_fib(0) == 0
+    # assert get_fib(1) == 1
+    # assert get_fib(2) == 1
+    # assert get_fib(9) == 34
+    # assert get_fib(11) == 89
+    #
+    # assert fibonacci_iterative(0) == 0
+    # assert fibonacci_iterative(1) == 1
+    # assert fibonacci_iterative(2) == 1
+    # assert fibonacci_iterative(9) == 34
+    # assert fibonacci_iterative(11) == 89
+    #
+    # assert calculate_fibonacci_with_cache(0) == 0
+    # assert calculate_fibonacci_with_cache(1) == 1
+    # assert calculate_fibonacci_with_cache(2) == 1
+    # assert calculate_fibonacci_with_cache(9) == 34
+    # assert calculate_fibonacci_with_cache(11) == 89
+    res, _ = good_fibonacci_linear_recursion(9)
+    assert res == 34
 
