@@ -11,53 +11,27 @@ class BST(object):
         self.root = Node(root)
 
     def insert(self, new_val):
-        if self.root:
-            self._insert_into_bst(self.root, new_val)
-        else:
-            self.root = Node(new_val)
+        """Public method to insert into BST"""
+        pass
 
     def _insert_into_bst(self, parent: Node, value: int):
-        if value < parent.value:
-            child = parent.left
-        else:
-            child = parent.right
-        if child:
-            self._insert_into_bst(child, value)
-        else:
-            if value < parent.value:
-                parent.left = Node(value)
-            else:
-                parent.right = Node(value)
+        """helper for recursion to insert into BST"""
+        pass
 
     def print(self):
-        res = self.preorder_print(self.root, '')
-        print(res)
-        return res
+        pass
 
     def preorder_print(self, start, traversal):
         """Helper method - use this to create a recursive print solution."""
-        if start is None:
-            return traversal
-        if start.value:
-            if traversal != '': traversal += '-'
-            traversal += str(start.value)
-            traversal = self.preorder_print(start.left, traversal)
-            return self.preorder_print(start.right, traversal)
+        pass
 
     def search(self, find_val):
-        return self._search_in_bst(self.root, find_val)
+        """Public search method in BST"""
+        pass
 
     def _search_in_bst(self, parent: Node, value: int) -> bool:
-        if not parent:
-            return False
-        if parent.value == value:
-            return True
-
-        if value < parent.value:
-            child = parent.left
-        else:
-            child = parent.right
-        return self._search_in_bst(child, value)
+        """helper func or search resursion in BST"""
+        pass
 
 
 if __name__ == '__main__':
