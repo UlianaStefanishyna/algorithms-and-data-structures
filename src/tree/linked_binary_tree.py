@@ -1,8 +1,8 @@
-from tree.binary_tree import BinaryTree
+from src.tree.binary_tree import BinaryTree
+from src.tree.tree import preorder_label, preorder_intent, parenthesize
 
 
 class LinkedBinaryTree(BinaryTree):
-
     class _Node:
         __slots__ = '_element', '_parent', '_left', '_right'
 
@@ -138,7 +138,57 @@ class LinkedBinaryTree(BinaryTree):
             t2._root = None
             t2.size = 0
 
+    def insert(self, root: Position, node):
+        if root is None:
+            self._add_root(node)
+        else:
+            if root < node:
+                if root.right is None:
+                    root.right = node
+                else:
+                    insert(root.right, node)
+            else:
+                if root.left is None:
+                    root.left = node
+                else:
+                    insert(root.left, node)
+
+
+def _insert_into_binary_tree(tree: LinkedBinaryTree, element: int, position: LinkedBinaryTree.Position = None,
+                             is_left: bool = False, is_right: bool = False) -> LinkedBinaryTree.Position:
+    if not is_left and not is_right:
+        return tree._add_root(element)
+    elif is_left and not is_right:
+        return tree._add_left(position, element)
+    elif is_right:
+        return tree._add_right(position, element)
+
+
+def preorder_label_1(position: LinkedBinaryTree.Position, label):
+    position._node.label = label
+    if position._node._left:
+        preorder_label_1(position._node._left, 2 * label)
+    if position._node._right:
+        preorder_label_1(position._node._right, 2 * label + 1)
+
 
 if __name__ == '__main__':
+    # data = [10, 5, 15, 3, 7, 13, 17]
+    data = [5, 3, 7, 2, 4, 6, 8]
+    # data = ['/', '*', '+', '+', '4', '-', '2', '3', '1', '', '', '9', '5', '', '']
     binary_tree = LinkedBinaryTree()
-    binary_tree.root()
+
+    root = binary_tree._add_root(data[0])
+    current_position = root
+
+    for i in range(1, len(data)):
+        if i % 2 == 1:
+            current_position = binary_tree._add_left(current_position, data[i])
+        else:
+            current_position = binary_tree._add_right(current_position, data[i])
+
+    depth = binary_tree.depth(root)
+    # preorder_label_1(root, 1)
+    # preorder_intent(binary_tree, root, depth)
+    parenthesize(binary_tree, root)
+

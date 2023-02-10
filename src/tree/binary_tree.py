@@ -1,4 +1,4 @@
-from tree.tree import Tree
+from src.tree.tree import Tree
 from typing import Optional
 
 
@@ -39,6 +39,9 @@ class BinaryTree(Tree):
 
     def positions(self):
         return self.inorder()
+
+    def num_children(self, p: Tree.Position) -> int:
+        return len([child for child in self.children(p)])
 
     def _subtree_inorder(self, p):
         """Generates a inorder iteration of positions in subtree rooted at p."""
