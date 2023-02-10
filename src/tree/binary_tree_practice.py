@@ -11,29 +11,19 @@ class BinaryTree:
 
     def search(self, final_val):
         """Return True if the value is in the tree, return False otherwise."""
-        return self.preorder_search(self.root, final_val)
+        pass
 
     def print_tree(self):
         """Print out all tree nodes as they are visited in a pre-order traversal."""
-        return self.preorder_print(self.root, '')
+        pass
 
     def preorder_search(self, start: Node, find_val: int):
         """Helper method - use this to create a recursive search solution."""
-        if start is None:
-            return False
-        if start.value == find_val:
-            return True
-        return self.preorder_search(start.left, find_val) or self.preorder_search(start.right, find_val)
+        pass
 
     def preorder_print(self, start, traversal):
         """Helper method - use this to create a recursive print solution."""
-        if start is None:
-            return traversal
-        if start.value:
-            if traversal != '': traversal += '-'
-            traversal += str(start.value)
-            traversal = self.preorder_print(start.left, traversal)
-            return self.preorder_print(start.right, traversal)
+        pass
 
 
 if __name__ == '__main__':
@@ -50,9 +40,3 @@ if __name__ == '__main__':
     assert tree_root_node.search(6)
     assert not tree_root_node.search(8)
     assert tree_root_node.print_tree() == '1-2-4-5-3-6-7'
-
-    print(tree_root_node.search(4))  # True
-    print(tree_root_node.search(6))  # True
-    print(tree_root_node.search(8))  # False
-    print(tree_root_node.print_tree())  # Should be 1-2-4-5-3-6-7
-
