@@ -11,10 +11,11 @@ class BST(object):
         self.root = Node(root)
 
     def insert(self, new_val):
-        if self.root:
-            self._insert_into_bst(self.root, new_val)
-        else:
-            self.root = Node(new_val)
+        # if self.root:
+        #     self._insert_into_bst(self.root, new_val)
+        # else:
+        #     self.root = Node(new_val)
+        self._insert_into_bst_concise(self.root, new_val)
 
     def _insert_into_bst(self, parent: Node, value: int):
         if value < parent.value:
@@ -28,6 +29,15 @@ class BST(object):
                 parent.left = Node(value)
             else:
                 parent.right = Node(value)
+
+    def _insert_into_bst_concise(self, parent: Node, value: int) -> Node:
+        if not parent:
+            return Node(value)
+        if value < parent.value:
+            parent.left = self._insert_into_bst_concise(parent.left, value)
+        else:
+            parent.right = self._insert_into_bst_concise(parent.right, value)
+        return parent
 
     def print(self):
         res = self.preorder_print(self.root, '')
