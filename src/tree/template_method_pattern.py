@@ -24,5 +24,3 @@ class EulerTour:
 
     def _hook_post_visit(self, p, d, path, result):
         pass
-
-
